@@ -1,0 +1,86 @@
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Events from './pages/Events';
+import EventDetail from './components/EventDetail';
+import CreateEvent from './pages/CreateEvent';
+import AdminDashboard from './pages/AdminDashboard';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Signup from './pages/SignUp';
+import Error from './pages/Error';
+import Logout from './pages/Logout';
+import { PrivateRoute, AdminRoute } from "./Routes/ProtectedRoutes";
+import UpdateEvent from './pages/UpdateEvent';
+
+function App() {
+
+  return (
+    <>
+    <Router>
+      
+      {/* Navbar */}
+      <Navbar />
+
+      {/* 🔥 FULL PAGE BACKGROUND */}
+      <div className="min-h-screen bg-linear-to-r from-indigo-500 to-purple-600">
+
+        {/* 🔥 WHITE MAIN CONTAINER */}
+        <div className="p-6 sm:p-12 lg:p-20 mx-auto w-full max-w-screen-2xl">
+          <div className="bg-white rounded-2xl min-h-[80vh] p-6 sm:p-10 shadow-xl border border-gray-200 flex flex-col items-center justify-center">
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route 
+                path="/events" 
+                element={
+                  <PrivateRoute>
+                    <Events />
+                  </PrivateRoute>
+                }
+              />
+              <Route 
+                path="/events/:id" 
+                element={
+                  <PrivateRoute>
+                    <EventDetail />
+                  </PrivateRoute>
+                }
+              />
+              <Route 
+                path="/events/new" 
+                element={
+                  <AdminRoute>
+                    <CreateEvent />
+                  </AdminRoute>
+                }
+              />
+              <Route 
+                path="/events/:id/edit" 
+                element={
+                  <AdminRoute>
+                    <UpdateEvent />
+                  </AdminRoute>
+                }
+              />
+              <Route 
+                path="/admin" 
+                element={
+                  <AdminRoute>
+                    <AdminDashboard />
+                  </AdminRoute>
+                }
+              />
+              <Route path='*' element={<Error />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
+    </>
+  )
+}
+
+export default App
