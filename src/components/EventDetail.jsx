@@ -18,7 +18,6 @@ const EventDetail = () => {
       setEvent(data.event);
     } catch (error) {
         toast.error(error.message || "Something went wrong");
-        console.error("Error fetching event data:", error);
     } finally {
       setLoading(false);
     }
@@ -31,7 +30,6 @@ const EventDetail = () => {
       Navigate("/events");
     } catch (error) {
       toast.error(error.message || "Failed to delete event");
-      console.error("Delete Error: ", error);
     }
   }
 

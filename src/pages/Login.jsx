@@ -19,11 +19,9 @@ const Login = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("User logged in: ",user);
         //Handling the form submission
         try {
             const res_data = await loginUser(user);
-            console.log("Response from Server while login: ", res_data);
             // Store token and user data (assuming res_data contains token and user object)
             // Adjust 'res_data.token' and 'res_data.user' based on your actual API response
             storeTokenInLS(res_data.token);
@@ -33,7 +31,6 @@ const Login = () => {
             navigate("/"); // Redirect to home page after successful login
         } catch (error) {
             toast.error(error.message);
-            console.log("Login Error: ", error);
         }
     };
     return (

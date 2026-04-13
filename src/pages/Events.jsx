@@ -10,10 +10,9 @@ const Events = () => {
   const getAllEvents = async () => {
     try {
         const data = await getEvents(authorizationToken);
-        console.log("Fetched events data successfully");
         setEvents(data.events);
     } catch (error) {
-      console.error("Error in fetching events : ", error);
+      // Request failures are handled by UI state/toasts in calling flows.
     }
   };
 

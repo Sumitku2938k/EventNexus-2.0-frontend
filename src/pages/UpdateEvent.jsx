@@ -43,7 +43,6 @@ const UpdateEvent = () => {
                 });
                 setPreview(poster); // Set existing poster as preview
             } catch (error) {
-                console.error("Error fetching event:", error);
                 toast.error("Error fetching event data");
             } finally {
                 setLoading(false);
@@ -97,7 +96,6 @@ const UpdateEvent = () => {
             toast.success("Event Updated Successfully");
             navigate(`/events/${id}`);
         } catch (error) {
-            console.log(error);
             toast.error("Something went wrong");
         }
     };

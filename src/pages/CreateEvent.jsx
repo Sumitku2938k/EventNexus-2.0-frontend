@@ -68,7 +68,6 @@ const CreateEvent = () => {
     navigate("/events");
   } catch (error) {
       toast.error(error.message || "Something went wrong");
-      console.log("Create Error: ", error);
   }
 };
 
