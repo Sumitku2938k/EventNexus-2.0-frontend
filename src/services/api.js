@@ -9,11 +9,13 @@ export const registerUser = async (user) => {
         body: JSON.stringify(user)
     });
 
+    const data = await res.json();
+
     if (!res.ok) {
-        throw new Error("Registration failed");
+        throw new Error(data.message || "Registration failed");
     }
 
-    return res.json();
+    return data;
 };
 
 export const loginUser = async (userData) => {
