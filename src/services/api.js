@@ -1,7 +1,7 @@
-const BASE_URL = "https://event-nexus-2-0-backend.vercel.app/api";
+const BASE_URL = "https://event-nexus-2-0-backend.vercel.app";
 
 export const registerUser = async (user) => {
-    const res = await fetch(`${BASE_URL}/auth/register`, {
+    const res = await fetch(`${BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -17,7 +17,7 @@ export const registerUser = async (user) => {
 };
 
 export const loginUser = async (userData) => {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export const loginUser = async (userData) => {
 };
 
 export const getEvents = async (token) => {
-    const response = await fetch(`${BASE_URL}/events`, {
+    const response = await fetch(`${BASE_URL}/api/events`, {
         method: "GET",
         headers: {
             Authorization: `${token}`,
@@ -45,7 +45,7 @@ export const getEvents = async (token) => {
 };
 
 export const createEvent = async (formData, token) => {
-    const res = await fetch(`${BASE_URL}/admin/events/create`, {
+    const res = await fetch(`${BASE_URL}/api/admin/events/create`, {
         method: "POST",
         headers: {
             Authorization: `${token}`
@@ -61,7 +61,7 @@ export const createEvent = async (formData, token) => {
 };
 
 export const getEventById = async (id, token) => {
-    const response = await fetch(`${BASE_URL}/events/${id}`, {
+    const response = await fetch(`${BASE_URL}/api/events/${id}`, {
         method: "GET",
         headers: {
             Authorization: `${token}`
@@ -76,7 +76,7 @@ export const getEventById = async (id, token) => {
 };
 
 export const deleteEventById = async (id, token) => {
-    const response = await fetch(`${BASE_URL}/admin/events/delete/${id}`, {
+    const response = await fetch(`${BASE_URL}/api/admin/events/delete/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `${token}`
@@ -91,7 +91,7 @@ export const deleteEventById = async (id, token) => {
 };
 
 export const updateEvent = async (id, formData, token) => {
-    const res = await fetch(`${BASE_URL}/admin/events/update/${id}`, {
+    const res = await fetch(`${BASE_URL}/api/admin/events/update/${id}`, {
         method: "PATCH",  
         headers: {
             Authorization: `${token}`
